@@ -1,0 +1,260 @@
+@mixin button {
+    width: 143px;
+    height: 50px;
+    background-color: $buttonBackground;
+    border-radius: 3px;
+    color: $buttonColor;
+    border: none;
+    font-family: 'Hind', sans-serif;
+    font-size: 18px;
+    &:hover {
+        background-color: $buttonBackgroundHover;
+        border: 1px solid white;
+        color: #40E0D0;
+    }
+}
+@mixin links {
+    color: $links_bannerText;
+    font-family: 'Hind', sans-serif;
+    padding-left: 32%;
+    &:visited {
+        color: #0FC0FC;
+    }
+    &:hover {
+        color: #2CCCBC;
+    }
+}
+
+$marked-words: (1st: 'awesome', 2nd: 'adventure', 3rd: 'start');
+$display: (f: flex, b: block);
+$fons: (sp: ('Source Sans Pro', sans-serif), h: ('Hind', sans-serif), f: ('Fresca', sans-serif));
+
+#markedWords {
+    background-color: $wordsColor;
+    color: $textColor;
+    line-height: 38px;
+    position: absolute;
+}
+#logo {
+    display: map-get($display, f);
+    height: 45px;
+}
+#p-logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin: $marginLogo;
+}
+#span-logo {
+    display: map-get($display, b);
+    font-size: 9px;
+    text-align: center;
+    margin-top: $marginTop;
+}
+
+body {
+    max-width: 1920px;
+    background-color: $contentBackground;
+
+    .header {
+        height: 720px;
+        background-image: $backgroundImage;
+        background-repeat: no-repeat;
+        background-size: 1920px 720px;
+        margin: 0;
+        padding: 0;
+        border-bottom-right-radius: 50em 17em;
+
+        .header-wrap {
+            padding-left: 192px;
+
+            .landing-logo {
+                @extend #logo;
+                padding-top: 25px;
+                
+                p {
+                    @extend #p-logo;
+                    color: $textColor;
+                    font-family: $header_footerFons;
+    
+                    span {
+                        @extend #span-logo;
+                        color: $textColor;
+                    }
+                } 
+            }   
+        }
+    }
+}
+
+.header_heading {
+    width: 490px;
+    color: $textColor;
+    position: relative;
+    font-family: map-get($fons, sp);
+    font-size: 45px;
+    font-weight: bold;
+    &::after {
+        @extend #markedWords;
+        content: map-get($marked-words, 1st);
+        top: 65px;
+        left: 0;
+    }
+}
+
+.header_text {
+    padding-top: 60px;
+    width: 600px;
+    line-height: 1.6;
+    padding-bottom: 65px;
+    color: $textColorHeader;
+    font-family:map-get($fons, f);
+    white-space: pre-line;
+}
+
+div {
+    .header_button {
+        @include button;
+    }
+    .login {
+        color: $textColorLink;
+        padding-left: 152px;
+        font-family: map-get($fons, h);
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.section {
+    height: 1400px;
+    margin-bottom: -230px;
+
+    .section_text {
+        padding: 20px 0 10px 0;
+        color: $textColor;
+        font-family: map-get($fons, sp);
+        font-size: 32px;
+        text-align: center;
+        vertical-align: text-top;
+        &::after {
+            @extend #markedWords;
+            content: map-get($marked-words, 2nd);
+            top: 780px;
+            left: 960px;
+        }
+    }
+    
+
+    .section_card {
+        width: 1080px;
+        margin-left: 392px;
+        display: map-get($display, f);
+        justify-content: space-between;
+        margin-top: 25px;
+        border-radius: 5px;
+        background-color: $footer_sectionBackgroung;
+        padding: 22px;
+
+        .section_card_img {
+            width: 320px;
+            height: 190px;
+        }
+        
+        .section_card_right_container {
+            .section_card_heading {
+                color: $textColorSection;
+                text-align: center;
+                padding-right: 150px;
+                font-family: map-get($fons, sp);
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .section_card_text {
+                color: $section_footerText;
+                height: 90px;
+                width: 460px;
+                padding-right: 150px;
+                font-family: map-get($fons, f);
+            }
+            .section_link {
+                @include links;
+            }
+        }
+    }
+}
+
+.section_banner {
+    width: 1200px;
+    height: 144px;
+    display: map-get($display, f);
+    justify-content: space-around;
+    background: $backgroundgradient;
+    border-radius: 5px;
+    margin-top: 215px;
+    margin-left: 360px;
+    position: absolute;
+
+    .section_banner_text_wrap {
+        .section_banner_heading {
+            margin-top: 30px;
+            color: $textColor;
+            font-family: map-get($fons, sp);
+            font-size: 29px;
+            font-weight: bold;
+            &::after {
+                @extend #markedWords;
+                content: map-get($marked-words, 3rd);
+                top: 30px;
+                left: 283px;
+            }
+        }
+        .section_banner_text {
+            color: $links_bannerText;
+            font-family: map-get($fons, f);
+            margin-top: -10px;
+        }
+    }
+    .section_banner_button {
+        @include button;
+        margin-top: 45px;
+    }
+}
+
+.footer {
+    .footer-wrap {
+        display: map-get($display, f);
+        justify-content: space-around;
+        background-color: $footer_sectionBackgroung;
+        height: 244px;
+        font-family: map-get($fons, f);
+
+        .footer_logo {
+            @extend #logo;
+            padding-top: 140px;
+
+            p {
+                @extend #p-logo;
+                color: $section_footerText;
+                font-family: $header_footerFons;
+    
+                span {
+                    @extend #span-logo;
+                    color: $section_footerText;
+                }
+            }
+        }
+        .footer_text {
+            width: 300px;
+            height: 55px;
+            padding-top: 130px;
+            color: $footerText;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .footer-cr {
+            width: 180px;
+            padding-top: 147px;
+            color: $footerText;
+        }
+    }
+}
