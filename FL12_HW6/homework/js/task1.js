@@ -1,11 +1,12 @@
-let a = parseInt(prompt('Please, enter a first value'));
-let b = parseInt(prompt('Please, enter a second value'));
-let c = parseInt(prompt('Please. enter a third value'));
+let a = parseFloat(prompt('Please, enter a first value'));
+let b = parseFloat(prompt('Please, enter a second value'));
+let c = parseFloat(prompt('Please. enter a third value'));
 
-let discriminant = b * b - 4 * a * c;
+const twoNumber = 2;
+const fourNumber = 4;
+let discriminant = b * b - fourNumber * a * c;
 let scqDisc = Math.sqrt(discriminant);
-let denomin = 2 * a;
-
+let denomin = twoNumber * a;
 
 if (isNaN(a) || isNaN(b) || isNaN(c)) {
     console.log('Invalid input data');
