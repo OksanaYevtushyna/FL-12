@@ -1,6 +1,6 @@
 let email = prompt('Please, enter your email');
-const userPassword = 'UserPass';
-const adminPassword = 'AdminPass';
+let userPassword = 'UserPass';
+let adminPassword = 'AdminPass';
 let minDefPass = 5;
 let minNewPass = 6;
 
