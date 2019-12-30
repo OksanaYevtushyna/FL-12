@@ -2,11 +2,10 @@ function addOne(x) {
     return x + 1;
 }
 
-let pipe = (...arg) => {
-    addOne;
-    for (i = 1; i < arg.length; i++) {
-        addOne(arg[i]);
-    }
+function pipe(...args) {
+    return args.reduce((item, total) => {
+        return total(item);
+    })
 }
 
 pipe(1, addOne, addOne);
