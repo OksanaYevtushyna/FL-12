@@ -75,11 +75,17 @@ const substitute = (arr) => {
 }
 
 //Task 9
-/*const getPastDay = (date, days) => {
-
+const getPastDay = (date, days) => {
+    let dayInMilleseconds = 86400000;
+    let getDate = date.getTime();
+    let finalDate = new Date(getDate - dayInMilleseconds * days);
+    return finalDate.toDateString();
 }
+const date = new Date(2019, 0, 2);
 
 //Task 10
 const formatDate = (date) => {
-
-}*/
+    /*let newDate = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/') + ' ' + [date.getHours(), date.getMinutes()].join(':')
+    return newDate;*/
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+}
