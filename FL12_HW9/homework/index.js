@@ -75,17 +75,20 @@ const substitute = (arr) => {
 }
 
 //Task 9
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 const getPastDay = (date, days) => {
     let dayInMilleseconds = 86400000;
     let getDate = date.getTime();
-    let finalDate = new Date(getDate - dayInMilleseconds * days);
-    return finalDate.toDateString();
+    const month = (mon) => mon ? MONTHS[mon - 1] : '';
+    let countedDate = new Date(getDate - dayInMilleseconds * days);
+    let countDays = countedDate.getDate();
+    return `${countDays}, (${countDays} ${month(countedDate.getMonth() + 1)} ${countedDate.getFullYear()})`;
 }
-const date = new Date(2019, 0, 2);
 
 //Task 10
 const formatDate = (date) => {
-    /*let newDate = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/') + ' ' + [date.getHours(), date.getMinutes()].join(':')
-    return newDate;*/
-    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+    const TEN = 10;
+    let check = (number) => number < TEN ? '0' + number : number;
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}` +
+        ` ${check(date.getHours())}:${check(date.getMinutes())}`
 }
