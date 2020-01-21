@@ -20,10 +20,10 @@ class Fighter {
                 return proper.health;
             },
             dealDamage(healthPoints) {
-                return proper.health = proper.health - healthPoints >= 0 ? proper.health - healthPoints : 0;
+                proper.health = proper.health - healthPoints >= 0 ? proper.health - healthPoints : 0;
             },
             heal(healthPoints) {
-                return proper.health = proper.health + healthPoints <= proper.hp ? proper.health + healthPoints : proper.hp;
+                proper.health = proper.health + healthPoints <= proper.hp ? proper.health + healthPoints : proper.hp;
             },
             addWin() {
                 proper.wins++;
@@ -49,9 +49,10 @@ class Fighter {
     }
 }
 
-battle = (...fighters) => {
-    if (fighters[0].getHealth() <= 0 || fighters[1].getHealth() <= 0) {
-        console.log(`${this.getName()} is dead and can't fight!`);
+let battle = (...fighters) => {
+    let deadFighter = [...fighters].find((item) => item.getHealth() <= 0)
+    if (deadFighter) {
+        console.log(`${deadFighter.getName()} is dead and can not fight!`);
     } else {
         fighters[0].attack(fighters[1]);
         if (fighters[1].getHealth()) {
@@ -71,5 +72,5 @@ battle = (...fighters) => {
     }
 }
 
-const fighter1 = new Fighter({ name: 'Maximus', damage: 15, hp: 100, strength: 30, agility: 25 });
+const fighter1 = new Fighter({ name: 'Maximus', damage: 23, hp: 100, strength: 30, agility: 25 });
 const fighter2 = new Fighter({ name: 'Comos', damage: 22, hp: 90, strength: 20, agility: 35 });
