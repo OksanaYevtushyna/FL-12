@@ -87,12 +87,22 @@ let tree = (arr, elem) => {
           return;
         }
         childrenContainer.hidden = !childrenContainer.hidden;
+        if (e.target.parentNode.childNodes[0].innerText === 'folder') {
+          e.target.parentNode.childNodes[0].innerText = 'folder_open'
+        } else {
+          e.target.parentNode.childNodes[0].innerText = 'folder'
+        }
       } else if (e.target.tagName === 'DIV') {
         let childrenContainer = e.target.parentNode.querySelector('ul');
         if (!childrenContainer) {
           return;
         }
         childrenContainer.hidden = !childrenContainer.hidden;
+        if (e.target.childNodes[0].innerText === 'folder') {
+          e.target.childNodes[0].innerText = 'folder_open'
+        } else {
+          e.target.childNodes[0].innerText = 'folder'
+        }
       }
     })
   })
